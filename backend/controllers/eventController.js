@@ -1,3 +1,4 @@
+const { bgBlue } = require("colors");
 const asyncHandler = require("express-async-handler");
 const Event = require("../models/eventModel");
 const User = require("../models/userModel");
@@ -16,6 +17,7 @@ const createEvent = asyncHandler(async (req, res) => {
     date: req.body.date,
     time: req.body.time,
     url: req.body.url,
+    creator: req.user.id,
     users: req.user.id,
   });
 
@@ -85,9 +87,38 @@ const getEvents = asyncHandler(async (req, res) => {
   res.status(200).json(events);
 });
 
+//@desc   Delete Event by id
+//@route  DELETE /api/events/:id
+//@access Private.
+const deleteEvent = asyncHandler(async (req, res) => {
+  const event = await Event.findById(req.params.id);
+
+  if (!event) {
+    res.status(400);
+    throw new Error("Event Not Found");
+  }
+
+  //Check for user
+  if (!req.user) {
+    res.status(401);
+    throw new Error("User Not Found");
+  }
+
+  //Verify that the logged in user is the creator of the event.
+  if (event.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error("User Not Authorized.");
+  }
+
+  await event.remove();
+
+  res.status(200).json({ id: req.params.id });
+});
+
 module.exports = {
   createEvent,
   addSelfToEvent,
   removeSelf,
   getEvents,
+  deleteEvent,
 };

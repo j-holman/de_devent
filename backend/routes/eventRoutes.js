@@ -6,9 +6,11 @@ const {
   addSelfToEvent,
   removeSelf,
   getEvents,
+  deleteEvent,
 } = require("../controllers/eventController");
 
 router.route("/").get(protect, getEvents).post(protect, createEvent);
+router.route("/:id").delete(protect, deleteEvent);
 router.route("/add/:id").put(protect, addSelfToEvent);
 router.route("/remove/:id").put(protect, removeSelf);
 

@@ -17,6 +17,11 @@ const eventSchema = mongoose.Schema(
     url: {
       type: String,
     },
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     users: [
       {
         type: mongoose.Schema.Types.ObjectId,
