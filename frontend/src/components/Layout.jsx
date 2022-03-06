@@ -1,18 +1,28 @@
 import React from "react";
 import "./Layout.css";
 import Header from "./Header";
-
+import { Row, Col } from "react-bootstrap";
 function Layout({ children }) {
   return (
-    <div className="container">
-      <div className="header">
-        <Header />
-      </div>
-      <div className="nav">NAV</div>
-      <div className="content">{children}</div>
-      <div className="aside">ASIDE</div>
-      <div className="footer">FOOTER</div>
-    </div>
+    <>
+      <Header />
+      <Row>
+        <Col>
+          <div className="nav">NAV</div>
+        </Col>
+        <Col xs={6}>
+          <div className="content">{children}</div>
+        </Col>
+        <Col>
+          <div className="aside">ASIDE</div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div className="footer">FOOTER</div>
+        </Col>
+      </Row>
+    </>
   );
 }
 

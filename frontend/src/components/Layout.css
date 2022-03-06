@@ -1,31 +1,14 @@
-.container {
-  height: 100vh;
-  display: grid;
-  grid-template: auto 1fr auto / auto 1fr auto;
-}
-
-.header {
-  background-color: pink;
-  padding: 2rem;
-  grid-column: 1 / 4;
-}
-
 .nav {
-  background-color: aquamarine;
-  grid-column: 1 / 2;
+  background-color: coral;
 }
 
 .content {
-  background-color: coral;
-  grid-column: 2 / 3;
+  background-color: pink;
 }
 
 .aside {
-  background-color: aquamarine;
-  grid-column: 3 / 4;
+  background-color: coral;
 }
-
 .footer {
-  background-color: pink;
-  grid-column: 1 / 4;
+  background-color: blue;
 }

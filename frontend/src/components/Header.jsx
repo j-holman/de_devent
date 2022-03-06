@@ -1,26 +1,47 @@
 import React from "react";
 import { MdAccountCircle, MdLogin } from "react-icons/md";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+import {
+  Navbar,
+  Container,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Button,
+} from "react-bootstrap";
+import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 function Header() {
   return (
-    <header>
-      <div className="logo">
-        <Link to="/">Events</Link>
-      </div>
-      <ul>
-        <li>
-          <Link to="/login">
-            <MdLogin /> Login
-          </Link>
-        </li>
-        <li>
-          <Link to="/register">
-            <MdAccountCircle /> Register
-          </Link>
-        </li>
-      </ul>
-    </header>
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Container>
+        <NavbarBrand href="/">
+          <MdLogin />
+          Devent
+        </NavbarBrand>
+        <NavbarToggle aria-controls="responsive-navbar-nav" />
+        <NavbarCollapse id="responsive-navbar-nav">
+          <Nav className="ms-auto">
+            <NavItem className="m-10">
+              <NavLink to="/login">
+                <Button variant="secondary">
+                  <MdLogin />
+                  Sign In
+                </Button>
+              </NavLink>
+            </NavItem>
+            <NavItem className="m-10">
+              <NavLink to="/register">
+                <Button variant="secondary">
+                  <MdAccountCircle />
+                  Sign Up
+                </Button>
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </NavbarCollapse>
+      </Container>
+    </Navbar>
   );
 }
 
