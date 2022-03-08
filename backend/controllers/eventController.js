@@ -17,8 +17,8 @@ const createEvent = asyncHandler(async (req, res) => {
     date: req.body.date,
     time: req.body.time,
     url: req.body.url,
-    creator: req.user.id,
-    users: req.user.id,
+    creator: req.user.username,
+    users: req.user.username,
   });
 
   res.status(200).json(event);
@@ -42,7 +42,7 @@ const addSelfToEvent = asyncHandler(async (req, res) => {
 
   const updatedEvent = await Event.findByIdAndUpdate(
     req.params.id,
-    { $addToSet: { users: req.user.id } },
+    { $addToSet: { users: req.user.username } },
     {
       new: true,
     }
@@ -82,6 +82,7 @@ const removeSelf = asyncHandler(async (req, res) => {
 //@route  GET /api/events
 //@access Private
 const getEvents = asyncHandler(async (req, res) => {
+  console.log("getEvents Called".red.underline);
   const events = await Event.find({});
 
   res.status(200).json(events);

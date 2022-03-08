@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import { Form, Container, Button } from "react-bootstrap";
-
+import { toast } from "react-toastify";
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
@@ -15,20 +15,21 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
+    //isLoading needs to be added above
     (state) => state.auth
   );
 
   useEffect(() => {
     if (isError) {
-      //Do something with message here.
+      toast.error(message);
     }
     if (isSuccess || user) {
       navigate("/");
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, navigate, dispatch]); //Add message here after completing the isError statement.
+  }, [user, isError, isSuccess, message, navigate, dispatch]); //Add message here after completing the isError statement.
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -77,9 +78,11 @@ function Login() {
             onChange={onChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
+        <div className="d-grid gap-2">
+          <Button variant="primary" size="lg" type="submit">
+            Login
+          </Button>
+        </div>
       </Form>
     </Container>
   );
