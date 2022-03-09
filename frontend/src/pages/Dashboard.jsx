@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getEvents, reset } from "../features/events/eventSlice";
 import EventCard from "../components/EventCard";
+import Spinner from "../components/Spinner";
 
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { events, isError, message } = useSelector(
-    //, isLoading
+  const { events, isError, isLoading, message } = useSelector(
     (state) => state.events
   );
 
@@ -28,6 +28,10 @@ function Dashboard() {
       dispatch(reset());
     };
   }, [user, isError, message, dispatch, navigate]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <section>

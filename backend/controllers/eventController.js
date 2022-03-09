@@ -20,7 +20,7 @@ const createEvent = asyncHandler(async (req, res) => {
     creator: req.user.username,
     users: req.user.username,
   });
-
+  console.log("createEvent called".blue.underline);
   res.status(200).json(event);
 });
 
