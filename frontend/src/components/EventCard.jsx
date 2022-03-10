@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Row, Col, Container, ListGroup } from "react-bootstrap";
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
 function EventCard({ event }) {
   return (
     <>
@@ -21,18 +21,13 @@ function EventCard({ event }) {
             <Row className="align-items-center">
               <Col>Posted By: {event.creator}</Col>
               <Col className="text-end">
-                <ListGroup horizontal className="justify-content-end">
-                  <ListGroup.Item>
-                    <Button variant="outline-secondary" size="sm">
-                      Yes
-                    </Button>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <Button variant="outline-secondary" size="sm">
-                      No
-                    </Button>
-                  </ListGroup.Item>
-                </ListGroup>
+                Going?
+                <Button variant="outline-secondary" size="sm" className="mx-1">
+                  Yes
+                </Button>
+                <Button variant="outline-secondary" size="sm" className="mx-1">
+                  No
+                </Button>
               </Col>
             </Row>
           </Card.Footer>

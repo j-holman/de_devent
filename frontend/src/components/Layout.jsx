@@ -19,7 +19,7 @@ function Layout({ children }) {
             <div>{children}</div>
           </Col>
           <Col className="d-none d-lg-block p2">
-            <div className="aside">ASIDE</div>
+            <div className="aside">Calender that shows events?</div>
           </Col>
         </Row>
       ) : (

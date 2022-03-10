@@ -83,7 +83,7 @@ const removeSelf = asyncHandler(async (req, res) => {
 //@access Private
 const getEvents = asyncHandler(async (req, res) => {
   console.log("getEvents Called".red.underline);
-  const events = await Event.find({});
+  const events = await Event.find().sort({ date: "asc" });
 
   res.status(200).json(events);
 });
