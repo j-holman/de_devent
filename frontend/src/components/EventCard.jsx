@@ -1,10 +1,11 @@
 import React from "react";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
+
 function EventCard({ event }) {
   return (
     <>
-      <Container className="pt-2">
-        <Card className="">
+      <Container className="p-2">
+        <Card className="card" text="white">
           <Card.Body>
             <Row>
               <Col>
@@ -15,17 +16,17 @@ function EventCard({ event }) {
               </Col>
             </Row>
             <Card.Text className="text-center">Description from DB</Card.Text>
-            <Card.Text>People Going: {event.users}</Card.Text>
+            <Card.Text>People Going: {event.users}, </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted">
+          <Card.Footer className="" text="white">
             <Row className="align-items-center">
               <Col>Posted By: {event.creator}</Col>
               <Col className="text-end">
                 Going?
-                <Button variant="outline-secondary" size="sm" className="mx-1">
+                <Button variant="secondary" size="sm" className="mx-1">
                   Yes
                 </Button>
-                <Button variant="outline-secondary" size="sm" className="mx-1">
+                <Button variant="secondary" size="sm" className="mx-1">
                   No
                 </Button>
               </Col>

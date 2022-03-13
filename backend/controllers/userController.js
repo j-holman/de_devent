@@ -7,10 +7,11 @@ const User = require("../models/userModel");
 //@route    POST /api/users
 //@access   Public.
 const registerUser = asyncHandler(async (req, res) => {
+  console.log("registerUser called".red.underline);
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    req.status(400);
+    res.status(400);
     throw new Error("All fields are required.");
   }
 
@@ -37,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       username: user.username,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);

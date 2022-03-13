@@ -9,7 +9,7 @@ function Layout({ children }) {
 
   return (
     <>
-      <Header />
+      <Header className="d-none d-lg-block" />
       {user ? (
         <Row>
           <Col className="d-none d-lg-block p2">

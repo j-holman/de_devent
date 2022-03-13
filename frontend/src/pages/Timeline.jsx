@@ -4,8 +4,15 @@ import EventTimeline from "../components/EventTimeline";
 function Timeline() {
   return (
     <>
-      <h2>Timeline</h2>
+      <h1 className="text-center text-white p-2">Upcoming Events</h1>
       <EventTimeline />
+      {/* If multiple stack them
+          Horizontal Scroll Option.
+          Less Information. Modal with more information.
+          CLickable
+          Count of People Going
+
+      */}
     </>
   );
 }

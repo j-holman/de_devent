@@ -38,23 +38,33 @@ function EventTimeline() {
   }
   return (
     <div>
-      <VerticalTimeline>
-        {events.map((event) => (
-          <VerticalTimelineElement
-            date={event.date}
-            key={event._id}
-            dateClassName="date"
-            contentArrowStyle={{ borderRight: "7px solid  rgb(255, 255, 255)" }}
-            iconStyle={{ background: "rgb(240,248,255)" }}
-          >
-            <h3 className="vertical-timeline-element-title">{event.title}</h3>
-            <h5 className="vertical-timeline-element-title">
-              Location: Nashville, TN
-            </h5>
-            <p>Description</p>
-          </VerticalTimelineElement>
-        ))}
-      </VerticalTimeline>
+      {events.length > 0 ? (
+        <VerticalTimeline lineColor={"#cad2c5"}>
+          {events.map((event) => (
+            <VerticalTimelineElement
+              date={event.date}
+              key={event._id}
+              dateClassName="date"
+              contentStyle={{ background: "#52796f", color: "#fff" }}
+              contentArrowStyle={{
+                borderRight: "10px solid  #52796f",
+              }}
+              iconStyle={{ background: "#cad2c5" }}
+            >
+              <h3 className="vertical-timeline-element-title">{event.title}</h3>
+              <h5 className="vertical-timeline-element-title">
+                Location: Nashville, TN
+              </h5>
+              <p>Description</p>
+              <p>People Going: {event.users.length}</p>
+            </VerticalTimelineElement>
+          ))}
+        </VerticalTimeline>
+      ) : (
+        <h1 className="text-white text-center">
+          Sorry, there are no upcoming events.
+        </h1>
+      )}
     </div>
   );
 }

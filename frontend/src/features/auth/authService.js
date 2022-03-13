@@ -1,7 +1,7 @@
 //HTTP Requests & Local Storage
 import axios from "axios";
 
-const API_URL = "/api/users/login";
+const API_URL = "/api/users";
 
 //Register a User
 const register = async (userData) => {
@@ -16,7 +16,7 @@ const register = async (userData) => {
 
 //Login a user
 const login = async (userData) => {
-  const response = await axios.post(API_URL, userData); //+"login",
+  const response = await axios.post(API_URL + "/login", userData); //+"login",
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));

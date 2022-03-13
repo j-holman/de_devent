@@ -53,7 +53,7 @@ function Login() {
 
   return (
     <Container className="pt-5 pb-5">
-      <h2 className="text-center">Login</h2>
+      <h2 className="text-center text-white">Login</h2>
       <Form onSubmit={onSubmit}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email address</Form.Label>
